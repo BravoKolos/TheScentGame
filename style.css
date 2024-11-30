@@ -1,5 +1,6 @@
 body {
     font-family: Tahoma, sans-serif;
+    background-color: bl;
 }
 
 nav {
@@ -43,3 +44,14 @@ nav ul li a:hover {
     height: auto;
 }
 
+.carousel {
+    width: 20%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-item img {
+    width: 20%;
+    height: 20%;
+    object-fit: cover;/
+}
