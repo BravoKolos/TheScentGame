@@ -1,6 +1,5 @@
-// Your Perfume class
 class Perfume {
-    constructor(name, brand, scent, headNote, heartNote, baseNote, price, volume, description, category) {
+    constructor(name, brand, scent, headNote, heartNote, baseNote, price, volume, description, category, imageUrl) {
         this.name = name;
         this.brand = brand;
         this.scent = scent;
@@ -11,9 +10,9 @@ class Perfume {
         this.volume = volume;
         this.description = description;
         this.category = category;
+        this.imageUrl = imageUrl || './assets/placeholder.png';
     }
 
-    // Get a formatted string of details to show on hover
     getFormattedDetails() {
         return `
             <strong>Name:</strong> ${this.name}<br>
@@ -27,7 +26,6 @@ class Perfume {
     }
 }
 
-// Perfume Catalog
 const perfumeCatalog = [
     new Perfume(
         "Versace Dylan Blue",
@@ -39,7 +37,8 @@ const perfumeCatalog = [
         100,
         "50ml",
         "Fragrance full of character and individuality, an expression of masculine strength and charisma.",
-        "Men's Perfume"
+        "Men's Perfume",
+        "/assets/men/versace-dylan-blue-pour-homme-woda-toaletowa-dla-mezczyzn.webp"
     ),
     new Perfume(
         "Stronger With You",
@@ -50,8 +49,9 @@ const perfumeCatalog = [
         "Cedar, Vanilla, Chestnuts",
         100,
         "Spray",
-        "Nothing can exist without love. When you wake up in the morning and you know that there is Someone who thinks about you. Stronger With You is a male answer to a secret equation that you will fully solve only with Her by your side.",
-        "Men's Perfume"
+        "A male answer to a secret equation that you will fully solve only with Her by your side.",
+        "Men's Perfume",
+        "./assets/men/armani-emporio-stronger-with-you-woda-toaletowa-dla-mezczyzn.webp"
     ),
     new Perfume(
         "Jean Paul Gaultier Le Beau Le Parfum",
@@ -62,35 +62,92 @@ const perfumeCatalog = [
         "Sandalwood",
         100,
         "70ml",
-        "Its power of attraction? The forbidden fruit of an extremely addictive, woody amber that tempts the senses to disobey.",
-        "Men's Perfume"
+        "The forbidden fruit of an extremely addictive, woody amber that tempts the senses to disobey.",
+        "Men's Perfume",
+        "/assets/men/jean-paul-gaultier-le-beau-le-parfum-intense-woda-perfumowana-dla-mezczyzn.webp"
     ),
     new Perfume(
-        "Khamrah",
+        "Lattafa Khamrah",
         "Lattafa",
         "Sweet, spicy",
         "Bergamot, Cinnamon, Nutmeg",
         "Lilies of the Valley, Praline, Tuberose",
         "Tonka Bean, Benzoin, Myrrh, Wood, Vanilla, Amber Wood",
-        "Akigala wood",
         100,
         "50ml",
-        "The fragrance settles on base notes of vanilla, tonka bean, amberwood, myrrh, benzoin and akigala wood.",
-        "Men's Perfume"
+        "Base notes of vanilla, tonka bean, amberwood, myrrh, benzoin, and akigala wood.",
+        "Men's Perfume",
+        "/assets/men/lattafa-khamrah-woda-perfumowana-unisex.webp"
     ),
     new Perfume(
-        
+        "Carolina Herrera Bad Boy",
+        "Carolina Herrera",
+        "Oriental, spice",
+        "grapefruit, white pepper",
+        "vetiver, sage",
+        "tonka bean, cacao",
+        100,
+        "50ml",
+        "Deep, sweet and spicy aroma slowly comes to the fore, giving the composition a charismatic character.",
+        "Men's Perfume",
+        "/assets/men/carolina-herrera-bad-boy-woda-toaletowa-dla-mezczyzn.webp"
     ),
     new Perfume(
         "Boss The Scent Elixir",
         "Hugo Boss",
         "Spicy, powdery, woody",
         "Allspice, Pimento pepper",
-        "Lavender, Lavender",
+        "Lavender",
         "Sandalwood",
         100,
         "50ml",
         "Highly concentrated, amber and leather composition exudes pure charm.",
-        "Men's Perfume"
+        "Men's Perfume",
+        "/assets/men/hugo-boss-boss-the-scent-elixir-woda-perfumowana-dla-mezczyzn.webp"
     ),
+    new Perfume(
+        "Carolina Herrera Good Girl",
+        "Carolina Herrera",
+        "Floral, oriental",
+        "Almond",
+        "Tuberose, Jasmine",
+        "Cacao, Tonka Bean",
+        120,
+        "80ml",
+        "A bold blend of dark and light elements for the modern woman.",
+        "Women's Perfume",
+        "/assets/women/carolina-herrera-good-girl-woda-perfumowana-dla-kobiet.webp"
+    )
 ];
+
+function renderPerfumes() {
+    const menContainer = document.getElementById('menPerfumesContainer');
+    const womenContainer = document.getElementById('womenPerfumesContainer');
+
+    perfumeCatalog.forEach((perfume) => {
+        const perfumeCard = document.createElement('div');
+        perfumeCard.classList.add('col');
+
+        perfumeCard.innerHTML = `
+            <div class="wrapper">
+                <img 
+                    src="${perfume.imageUrl}" 
+                    alt="${perfume.name}" 
+                    onerror="this.src='./assets/placeholder.png';" 
+                    title="${perfume.getFormattedDetails()}">
+                <div class="content">
+                    <h1>${perfume.name}</h1>
+                    <p>${perfume.description}</p>
+                </div>
+            </div>
+        `;
+
+        if (perfume.category === "Men's Perfume") {
+            menContainer.appendChild(perfumeCard);
+        } else if (perfume.category === "Women's Perfume") {
+            womenContainer.appendChild(perfumeCard);
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', renderPerfumes);
