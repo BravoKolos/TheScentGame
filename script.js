@@ -15,13 +15,13 @@ class Perfume {
 
     getFormattedDetails() {
         return `
-            <strong>Name:</strong> ${this.name}<br>
-            <strong>Brand:</strong> ${this.brand}<br>
-            <strong>Category:</strong> ${this.category}<br>
-            <strong>Price:</strong> $${this.price.toFixed(2)}<br>
-            <strong>Scent:</strong> ${this.scent}<br>
-            <strong>Volume:</strong> ${this.volume}<br>
-            <strong>Description:</strong> ${this.description}
+            Name: ${this.name}<br>
+            Brand: ${this.brand}<br>
+            Category: ${this.category}<br>
+            Price:${this.price.toFixed(2)}<br>
+            Scent: ${this.scent}<br>
+            Volume: ${this.volume}<br>
+            Description:${this.description}
         `;
     }
 }
@@ -42,7 +42,7 @@ function renderPerfumes() {
                     onerror="this.src='./assets/placeholder.png';" 
                     title="${perfume.getFormattedDetails()}">
                 <div class="content">
-                    <h1>${perfume.name}</h1>
+                    <h1 class="perfumeName">${perfume.name}</h1>
                     <p>${perfume.description}</p>
                 </div>
             </div>
