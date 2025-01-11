@@ -123,10 +123,6 @@ main {
     background-color: rgba(50, 57, 65, 0.1);
 }
 
-.container.text-center {
-        margin-top: 50px;
-    }
-
 .gridContainer {
     display: grid;
 }

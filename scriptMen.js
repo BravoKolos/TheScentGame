@@ -28,7 +28,6 @@ class Perfume {
 
 function renderPerfumes() {
     const menContainer = document.getElementById('menPerfumesContainer');
-    const womenContainer = document.getElementById('womenPerfumesContainer');
 
     perfumeCatalog.forEach((perfume) => {
         const perfumeCard = document.createElement('div');
@@ -50,10 +49,10 @@ function renderPerfumes() {
 
         if (perfume.category === "Men's Perfume") {
             menContainer.appendChild(perfumeCard);
-        } else if (perfume.category === "Women's Perfume") {
-            womenContainer.appendChild(perfumeCard);
         }
     });
+
 }
 
 document.addEventListener('DOMContentLoaded', renderPerfumes);
+
